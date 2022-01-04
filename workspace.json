@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "models": "packages/models",
+    "todo-api": "packages/todo-api"
+  }
+}
