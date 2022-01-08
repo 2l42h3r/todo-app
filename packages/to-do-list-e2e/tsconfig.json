@@ -1,10 +1,16 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.settings.json",
   "compilerOptions": {
     "sourceMap": false,
-    "outDir": "../../dist/out-tsc",
+    "outDir": "./tsc-out",
     "allowJs": true,
-    "types": ["cypress", "node"]
+    "types": ["cypress", "node", "jest"],
+    "rootDir": "./src"
   },
-  "include": ["src/**/*.ts", "src/**/*.js"]
+  "include": ["src/**/*.ts", "src/**/*.js"],
+  "references": [
+    {
+      "path": "../../packages/to-do-list"
+    }
+  ]
 }

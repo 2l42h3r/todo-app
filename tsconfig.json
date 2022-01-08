@@ -1,0 +1,20 @@
+{
+  "files": [],
+  "compilerOptions": {
+    "disableSourceOfProjectReferenceRedirect": true
+  },
+  "references": [
+    {
+      "path": "./packages/models"
+    },
+    {
+      "path": "./packages/to-do-list"
+    },
+    {
+      "path": "./packages/to-do-list-e2e"
+    },
+    {
+      "path": "./packages/todo-api"
+    }
+  ]
+}

@@ -1,7 +1,19 @@
-{
+module.exports = {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "tsconfigRootDir": __dirname,
+    "project": ["tsconfig.json", "./packages/*/tsconfig.json"]
+  },
+  "plugins": ["@nrwl/nx", "@typescript-eslint"],
+  "extends": [
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier"
+  ],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -32,4 +44,4 @@
       "rules": {}
     }
   ]
-}
+};

@@ -9,7 +9,7 @@
       "options": {
         "outputPath": "dist/packages/todo-api",
         "main": "packages/todo-api/src/main.ts",
-        "tsConfig": "packages/todo-api/tsconfig.app.json",
+        "tsConfig": "packages/todo-api/tsconfig.json",
         "assets": ["packages/todo-api/src/assets"]
       },
       "configurations": {

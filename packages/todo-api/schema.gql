@@ -1,0 +1,51 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Category {
+  id: Int!
+  name: String!
+  todos: [Todo]!
+  userId: Int!
+}
+
+type Mutation {
+  changePasswordByID(id: Int!, password: String!): User!
+  changePasswordByName(name: String!, password: String!): User!
+  removeTodo(id: Int!): Todo!
+  updateTodo(updateTodoData: UpdateTodoArgs!): Todo!
+}
+
+type Query {
+  category(id: Int!): Category!
+  todo(id: Int!): Todo!
+  userById(id: Int!): User!
+  userByName(name: String!): User!
+}
+
+type Todo {
+  categoryId: Int
+  description: String
+  done: Boolean!
+  id: Int!
+  name: String!
+  priority: Int
+  userId: Int!
+}
+
+input UpdateTodoArgs {
+  categoryId: Int
+  description: String
+  done: Boolean
+  id: Int!
+  name: String
+  priority: Int
+}
+
+type User {
+  categories: [Category!]!
+  id: Int!
+  name: String!
+  passwordHash: String!
+  todos: [Todo!]!
+}

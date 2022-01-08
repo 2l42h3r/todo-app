@@ -1,10 +1,13 @@
-{
+module.exports = {
   "extends": [
     "plugin:@nrwl/nx/react-typescript",
-    "../../.eslintrc.json",
+    "../../.eslintrc.js",
     "next",
     "next/core-web-vitals"
   ],
+  parserOptions: {
+    project: ['tsconfig.json'],
+  },
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {

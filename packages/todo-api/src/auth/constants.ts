@@ -1,3 +1,3 @@
 export const jwtConstants = {
-    secret: 'jotWuTe-test',
+  secret: 'jotWuTe-test',
 };

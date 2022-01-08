@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.settings.json",
   "compilerOptions": {
     "jsx": "preserve",
     "allowJs": true,
@@ -8,10 +8,13 @@
     "types": ["node", "jest"],
     "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "outDir": "./tsc-out",
+    "rootDir": "."
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "references": []
 }

@@ -1,6 +1,9 @@
-{
-  "extends": ["plugin:cypress/recommended", "../../.eslintrc.json"],
+module.exports = {
+  "extends": ["plugin:cypress/recommended", "../../.eslintrc.js"],
   "ignorePatterns": ["!**/*"],
+  parserOptions: {
+    project: ['tsconfig.json'],
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
