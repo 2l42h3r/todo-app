@@ -11,8 +11,8 @@ import { TAuthPayload } from '../../auth/interface/auth-payload.interface';
 @Resolver(() => User)
 export class UsersResolver {
   constructor(
-    private usersService: UserService,
-    private todosService: TodoService
+    private readonly usersService: UserService,
+    private readonly todosService: TodoService
   ) {}
 
   @UseGuards(GqlAuthGuard)

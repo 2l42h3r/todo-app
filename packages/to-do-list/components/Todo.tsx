@@ -126,7 +126,8 @@ const Todo = ({
       } else {
         setEditingTodo(currentTodo);
       }
-      return setEditing(false);
+      setEditing(false);
+      return;
     }
     setCurrentTodo((prevState) => ({ ...prevState, done: !prevState.done }));
     await updateTodoMutation({

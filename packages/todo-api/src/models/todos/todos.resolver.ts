@@ -10,7 +10,7 @@ import { User } from '../users/user.model';
 
 @Resolver(() => Todo)
 export class TodosResolver {
-  constructor(private todoService: TodoService) {}
+  constructor(private readonly todoService: TodoService) {}
 
   @UseGuards(GqlAuthGuard)
   @Query(() => Todo, { name: 'todo' })
