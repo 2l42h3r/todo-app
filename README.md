@@ -3,7 +3,7 @@
 # ToDo App
 
 Simple full-stack ToDo web app as a college project.
-Be aware this is not production-ready code. Use at your own risk.
+Be aware this is not production-ready code. Use at your own discretion.
 
 ## Description
 ### API (packages/todo-api) - NestJS
