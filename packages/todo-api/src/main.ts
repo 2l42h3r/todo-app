@@ -36,4 +36,6 @@ async function bootstrap() {
   );
 }
 
-void bootstrap();
+void (async function () {
+  await bootstrap();
+})();

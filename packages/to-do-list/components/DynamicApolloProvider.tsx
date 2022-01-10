@@ -5,7 +5,7 @@ import {
 } from '@apollo/client';
 import { useSession } from 'next-auth/react';
 import { ReactChild, useRef } from 'react';
-import createClient from '../graphql/apollo-client';
+import createClient from '../graphql/createClient';
 
 const DynamicApolloProvider = ({
   children,

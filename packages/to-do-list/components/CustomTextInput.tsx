@@ -17,12 +17,12 @@ const CustomTextInput = <T extends keyof Pick<ITodo, 'name' | 'description'>>({
   handleChange,
   validationCallback,
 }: ICustomTextInput<T>): JSX.Element => {
-  const innerHandleChange = (value: string): void => {
+  const innerHandleChange = (val: string): void => {
     let valid = true;
     if (validationCallback) {
-      valid = validationCallback(value);
+      valid = validationCallback(val);
     }
-    handleChange(id, value, valid);
+    handleChange(id, val, valid);
   };
 
   return (

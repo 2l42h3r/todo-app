@@ -10,9 +10,11 @@ const SessionGuardHoc = ({
   const router = useRouter();
   const { status } = useSession();
 
-  if (status === 'unauthenticated') {
-    void router.push({ pathname: '/api/auth/signin' });
-  }
+  void (async function () {
+    if (status === 'unauthenticated') {
+      await router.push({ pathname: '/api/auth/signin' });
+    }
+  })();
 
   return <>{children}</>;
 };

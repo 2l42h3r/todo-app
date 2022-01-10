@@ -1,7 +1,7 @@
 import NextAuth, { Session, User } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import axios from 'axios';
-import createClient from '../../../graphql/apollo-client';
+import createClient from '../../../graphql/createClient';
 import { JWT } from 'next-auth/jwt';
 import { omit } from 'lodash';
 import { GET_FULL_USER } from '../../..//graphql/queries/user';

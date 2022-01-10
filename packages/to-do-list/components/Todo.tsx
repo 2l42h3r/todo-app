@@ -56,7 +56,7 @@ const Todo = ({
 
   const shouldAllowEditing = isCreating || isEditing;
 
-  const [updateTodo] = useMutation<updateTodo, updateTodoVariables>(
+  const [updateTodoMutation] = useMutation<updateTodo, updateTodoVariables>(
     UPDATE_TODO,
     {
       update(cache, { data }) {
@@ -75,7 +75,7 @@ const Todo = ({
     }
   );
 
-  const [createTodo] = useMutation<createTodo, createTodoVariables>(
+  const [createTodoMutation] = useMutation<createTodo, createTodoVariables>(
     CREATE_TODO,
     {
       update(cache, { data }) {
@@ -88,7 +88,7 @@ const Todo = ({
     }
   );
 
-  const [removeTodo] = useMutation<removeTodo, removeTodoVariables>(
+  const [removeTodoMutation] = useMutation<removeTodo, removeTodoVariables>(
     REMOVE_TODO,
     {
       update(cache, { data }) {
@@ -97,7 +97,7 @@ const Todo = ({
           query: GET_TODOS,
           data: {
             todos: existingTodos.todos.filter(
-              ({ id }) => id !== data.removeTodo.id
+              (todo) => todo.id !== data.removeTodo.id
             ),
           },
         });
@@ -110,7 +110,7 @@ const Todo = ({
       if (editingTodo.name) {
         setCurrentTodo((prevState) => ({ ...prevState, ...editingTodo }));
         if (isCreating) {
-          await createTodo({
+          await createTodoMutation({
             variables: {
               createTodoData: omit({ ...currentTodo, ...editingTodo }, 'id'),
             },
@@ -119,7 +119,7 @@ const Todo = ({
             addCallback();
           }
         } else {
-          await updateTodo({
+          await updateTodoMutation({
             variables: { updateTodoData: { ...currentTodo, ...editingTodo } },
           });
         }
@@ -129,7 +129,7 @@ const Todo = ({
       return setEditing(false);
     }
     setCurrentTodo((prevState) => ({ ...prevState, done: !prevState.done }));
-    await updateTodo({
+    await updateTodoMutation({
       variables: {
         updateTodoData: { ...currentTodo, done: !currentTodo.done },
       },
@@ -170,9 +170,9 @@ const Todo = ({
           name="ToDo Description"
           handleChange={handleChange}
         />
-      ) : description ? (
-        <div className="ml-2 text-gray-600">{description}</div>
-      ) : null}
+      ) : (
+        <div className="ml-2 text-gray-600">{description || ''}</div>
+      )}
       <div
         className={`ml-auto ${
           shouldAllowEditing ? 'text-gray-600' : 'text-black cursor-pointer'
@@ -188,7 +188,7 @@ const Todo = ({
             <FontAwesomeIcon
               className="mx-4"
               icon={faTrash}
-              onClick={() => removeTodo({ variables: { id } })}
+              onClick={() => removeTodoMutation({ variables: { id } })}
             />
           </>
         )}
