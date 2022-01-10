@@ -1,17 +1,26 @@
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import './styles.css';
+import '../styles/globals.css';
+import { SessionProvider } from 'next-auth/react';
+import { ApolloProvider } from '@apollo/client';
+import createClient from '../graphql/apollo-client';
+import Layout from '../components/Layout';
+import SessionGuardHoc from '../components/SessionGuardHoc';
+import type { ICustomAppProps } from './_app.types';
+import DynamicApolloProvider from '../components/DynamicApolloProvider';
 
-function CustomApp({ Component, pageProps }: AppProps) {
+function CustomApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: ICustomAppProps) {
   return (
-    <>
-      <Head>
-        <title>Welcome to to-do-list!</title>
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
+    <SessionProvider session={session}>
+      <SessionGuardHoc>
+        <DynamicApolloProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </DynamicApolloProvider>
+      </SessionGuardHoc>
+    </SessionProvider>
   );
 }
 

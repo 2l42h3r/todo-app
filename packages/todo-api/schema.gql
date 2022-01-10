@@ -9,9 +9,17 @@ type Category {
   userId: Int!
 }
 
+input CreateTodoArgs {
+  categoryId: Int
+  description: String
+  done: Boolean
+  name: String
+  priority: Int
+}
+
 type Mutation {
-  changePasswordByID(id: Int!, password: String!): User!
-  changePasswordByName(name: String!, password: String!): User!
+  createTodo(createTodoData: CreateTodoArgs!): Todo!
+  removeCategory(id: Int!): Category!
   removeTodo(id: Int!): Todo!
   updateTodo(updateTodoData: UpdateTodoArgs!): Todo!
 }
@@ -19,8 +27,8 @@ type Mutation {
 type Query {
   category(id: Int!): Category!
   todo(id: Int!): Todo!
-  userById(id: Int!): User!
-  userByName(name: String!): User!
+  todos: [Todo!]!
+  user: User!
 }
 
 type Todo {

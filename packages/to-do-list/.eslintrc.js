@@ -1,5 +1,5 @@
 module.exports = {
-  "extends": [
+  extends: [
     "plugin:@nrwl/nx/react-typescript",
     "../../.eslintrc.js",
     "next",
@@ -8,8 +8,8 @@ module.exports = {
   parserOptions: {
     project: ['tsconfig.json'],
   },
-  "ignorePatterns": ["!**/*"],
-  "overrides": [
+  ignorePatterns: ["!**/*"],
+  overrides: [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
@@ -28,7 +28,7 @@ module.exports = {
       "rules": {}
     }
   ],
-  "env": {
+  env: {
     "jest": true
   }
 }

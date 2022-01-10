@@ -5,6 +5,7 @@ import {
   Int,
   ResolveField,
   Parent,
+  Mutation,
 } from '@nestjs/graphql';
 import { TodoService } from '../todos/todo.service';
 import { Category } from './category.model';
@@ -20,6 +21,11 @@ export class CategoryResolver {
 
   @Query(() => Category, { name: 'category' })
   async getCategory(@Args('id', { type: () => Int }) id: number) {
+    return this.categoryService.category({ id });
+  }
+
+  @Mutation(() => Category)
+  async removeCategory(@Args('id', { type: () => Int }) id: number) {
     return this.categoryService.category({ id });
   }
 

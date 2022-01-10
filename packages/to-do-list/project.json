@@ -48,6 +48,20 @@
       "options": {
         "lintFilePatterns": ["packages/to-do-list/**/*.{ts,tsx,js,jsx}"]
       }
+    },
+    "fetch-schema": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "npx apollo service:download --endpoint=http://localhost:3333/graphql graphql-schema.json"
+      }
+    },
+    "schema-codegen": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "npx apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --tagName=gql"
+      }
     }
   },
   "tags": []

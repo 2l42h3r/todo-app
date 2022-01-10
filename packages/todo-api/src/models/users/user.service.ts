@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../providers/database/postgres/prisma.sevice';
 import { User, Prisma } from '@prisma/client';
-import { hash } from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -28,16 +27,5 @@ export class UserService {
 
   async deleteUser(where: Prisma.UserWhereUniqueInput): Promise<User> {
     return this.prisma.user.delete({ where });
-  }
-
-  async changePassword(params: {
-    where: Prisma.UserWhereUniqueInput;
-    data: string;
-  }): Promise<User> {
-    const hashed = await hash(params.data, 10);
-    return this.updateUser({
-      where: params.where,
-      data: { passwordHash: hashed },
-    });
   }
 }
