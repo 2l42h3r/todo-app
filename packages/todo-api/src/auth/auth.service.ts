@@ -41,7 +41,7 @@ export class AuthService {
   async register(payload: AuthDto) {
     this.logger.log(payload.password);
     const hashedPassword = await hash(payload.password, 10);
-    return await this.userService.createUser({
+    return this.userService.createUser({
       name: payload.username,
       passwordHash: hashedPassword,
     });
