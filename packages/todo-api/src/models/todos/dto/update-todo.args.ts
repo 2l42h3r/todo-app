@@ -28,14 +28,4 @@ export class UpdateTodoArgs {
   @IsBoolean()
   @IsOptional()
   done?: boolean;
-
-  @Field(() => Int, { nullable: true })
-  @IsInt()
-  @IsOptional()
-  priority?: number;
-
-  @Field(() => Int, { nullable: true })
-  @IsInt()
-  @IsOptional()
-  categoryId?: number;
 }

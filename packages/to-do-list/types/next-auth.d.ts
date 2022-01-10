@@ -1,9 +1,9 @@
 import NextAuth from 'next-auth';
-import type { user } from '../graphql/queries/__generated__/user';
+import type { user_user } from '../graphql/queries/__generated__/user';
 
 declare module 'next-auth' {
   interface Session {
-    user: user;
+    user: user_user;
     accessToken: string;
   }
 

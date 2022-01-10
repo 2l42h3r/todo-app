@@ -5,16 +5,19 @@ import createClient from '../../../graphql/apollo-client';
 import { JWT } from 'next-auth/jwt';
 import { omit } from 'lodash';
 import { GET_FULL_USER } from '../../..//graphql/queries/user';
-import type { user } from '../../../graphql/queries/__generated__/user';
+import type {
+  user,
+  user_user,
+} from '../../../graphql/queries/__generated__/user';
 
 export default NextAuth({
   debug: true,
   providers: [
     Credentials({
-      name: 'Zaloguj się nazwą i hasłem',
+      name: 'ToDo List',
       credentials: {
-        username: { label: 'Nazwa konta', type: 'string' },
-        password: { label: 'Hasło', type: 'password' },
+        username: { label: 'Username', type: 'string' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
         console.log(' in authorize ');
@@ -62,7 +65,7 @@ export default NextAuth({
       console.log('params in session callback', params);
       params.session.user = {
         ...params.session.user,
-        ...(params.token.user as User),
+        ...(params.token.user as user_user),
       };
       params.session.accessToken = params.token.accessToken as string;
       return params.session;

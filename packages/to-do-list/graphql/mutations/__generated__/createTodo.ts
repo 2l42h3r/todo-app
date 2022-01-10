@@ -3,13 +3,13 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { UpdateTodoArgs } from "./../../../../../__generated__/globalTypes";
+import { CreateTodoArgs } from "./../../../../../__generated__/globalTypes";
 
 // ====================================================
-// GraphQL mutation operation: updateTodo
+// GraphQL mutation operation: createTodo
 // ====================================================
 
-export interface updateTodo_updateTodo {
+export interface createTodo_createTodo {
   __typename: "Todo";
   id: number;
   name: string;
@@ -17,10 +17,10 @@ export interface updateTodo_updateTodo {
   done: boolean;
 }
 
-export interface updateTodo {
-  updateTodo: updateTodo_updateTodo;
+export interface createTodo {
+  createTodo: createTodo_createTodo;
 }
 
-export interface updateTodoVariables {
-  updateTodoData: UpdateTodoArgs;
+export interface createTodoVariables {
+  createTodoData: CreateTodoArgs;
 }

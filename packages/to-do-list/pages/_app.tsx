@@ -1,7 +1,5 @@
 import '../styles/globals.css';
 import { SessionProvider } from 'next-auth/react';
-import { ApolloProvider } from '@apollo/client';
-import createClient from '../graphql/apollo-client';
 import Layout from '../components/Layout';
 import SessionGuardHoc from '../components/SessionGuardHoc';
 import type { ICustomAppProps } from './_app.types';

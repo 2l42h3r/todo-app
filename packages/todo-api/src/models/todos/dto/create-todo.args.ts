@@ -1,11 +1,5 @@
-import {
-  IsString,
-  IsOptional,
-  IsInt,
-  IsDefined,
-  IsBoolean,
-} from 'class-validator';
-import { Field, Int, InputType } from '@nestjs/graphql';
+import { IsString, IsOptional, IsDefined, IsBoolean } from 'class-validator';
+import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()
 export class CreateTodoArgs {
@@ -23,14 +17,4 @@ export class CreateTodoArgs {
   @IsBoolean()
   @IsOptional()
   done?: boolean;
-
-  @Field(() => Int, { nullable: true })
-  @IsInt()
-  @IsOptional()
-  priority?: number;
-
-  @Field(() => Int, { nullable: true })
-  @IsInt()
-  @IsOptional()
-  categoryId?: number;
 }

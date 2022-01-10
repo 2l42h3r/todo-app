@@ -1,7 +1,5 @@
-import { CacheModule, Module, Logger } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { PostgresDatabaseProviderModule } from '../providers/database/postgres/provider.module';
 import { join } from 'path';
@@ -9,7 +7,6 @@ import { FastifyContext } from 'apollo-server-fastify';
 import { AuthModule } from '../auth/auth.module';
 import { UserModule } from '../models/users/user.module';
 import { TodoModule } from '../models/todos/todo.module';
-import { CategoryModule } from '../models/categories/category.module';
 
 @Module({
   imports: [
@@ -17,7 +14,6 @@ import { CategoryModule } from '../models/categories/category.module';
     PostgresDatabaseProviderModule,
     UserModule,
     TodoModule,
-    CategoryModule,
     CacheModule.register(),
     GraphQLModule.forRoot({
       cors: true,
@@ -30,7 +26,5 @@ import { CategoryModule } from '../models/categories/category.module';
     }),
   ],
   exports: [PostgresDatabaseProviderModule],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

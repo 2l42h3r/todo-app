@@ -14,12 +14,6 @@ export class Todo {
   @Field(() => Boolean)
   done!: boolean;
 
-  @Field(() => Int, { nullable: true })
-  priority?: number;
-
   @Field(() => Int)
   userId!: number;
-
-  @Field(() => Int, { nullable: true })
-  categoryId?: number;
 }

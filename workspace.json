@@ -3,7 +3,6 @@
   "projects": {
     "models": "packages/models",
     "to-do-list": "packages/to-do-list",
-    "to-do-list-e2e": "packages/to-do-list-e2e",
     "todo-api": "packages/todo-api"
   }
 }

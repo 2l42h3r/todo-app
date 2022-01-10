@@ -15,7 +15,7 @@
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
-        "command": "npx prisma migrate dev--schema ./src/prisma/schema.prisma",
+        "command": "npx prisma migrate dev --schema ./src/prisma/schema.prisma",
         "cwd": "packages/models"
       }
     },
