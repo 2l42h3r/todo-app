@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { UserService } from '../models/users/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { hash, compare } from 'bcrypt';
@@ -13,13 +13,10 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
-  private readonly logger = new Logger(AuthService.name);
-
   async validateUser(
     username: string,
     password: string
   ): Promise<null | TAuthPayload> {
-    this.logger.log(username, password);
     const user = await this.userService.user({ name: username });
     if (!user) {
       return null;
@@ -39,7 +36,6 @@ export class AuthService {
   }
 
   async register(payload: AuthDto) {
-    this.logger.log(payload.password);
     const hashedPassword = await hash(payload.password, 10);
     return this.userService.createUser({
       name: payload.username,

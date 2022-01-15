@@ -20,7 +20,6 @@ export default NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        console.log(' in authorize ');
         try {
           const signInRequest = await axios.post<{ access_token: string }>(
             'http://localhost:3333/api/auth/login',
@@ -28,7 +27,6 @@ export default NextAuth({
           );
 
           const { access_token } = signInRequest.data;
-          console.log('data', signInRequest.data);
 
           if (access_token) {
             try {
@@ -54,7 +52,6 @@ export default NextAuth({
   secret: 'test',
   callbacks: {
     jwt(params: { token: JWT; user: User }) {
-      console.log('params in jwt callback', params);
       if (params.user) {
         params.token.accessToken = params.user?.access_token;
         params.token.user = omit(params.user, 'access_token');
@@ -62,7 +59,6 @@ export default NextAuth({
       return params.token;
     },
     session(params: { session: Session; token: JWT }) {
-      console.log('params in session callback', params);
       params.session.user = {
         ...params.session.user,
         ...(params.token.user as user_user),
